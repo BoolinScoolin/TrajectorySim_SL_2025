@@ -18,8 +18,8 @@ ic = [0 0 0 0 1.2446 0]';  % [x-position x-velocity y-position y-velocity z-posi
 try
 options = odeset('RelTol', 1e-4, 'Events', @landingEvent);
 tic
-[t, u] = ode113(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm) , tspan, ic, options);
-%[t, u] = rk45(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 1e-8);
+%[t, u] = ode113(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm) , tspan, ic, options);
+[t, u] = rk45(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 1e-8);
 %[t, u] = rk4(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 0.01);
 toc
 catch
