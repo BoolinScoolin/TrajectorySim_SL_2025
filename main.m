@@ -19,8 +19,8 @@ try
 options = odeset('RelTol', 1e-4, 'Events', @landingEvent);
 tic
 %[t, u] = ode113(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm) , tspan, ic, options);
-[t, u] = rk45(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 1e-8);
-%[t, u] = rk4(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 0.01);
+%[t, u] = rk45(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 1e-8);
+[t, u] = rk4(@(t,u) odeOfMotion(t,u,motorFilename,rocket,mainParachute,drogueParachute,rail.cant,rail.length,wind,atm), tspan(1), tspan(end), ic, 0.01);
 toc
 catch
     error("Try running ""define""")
